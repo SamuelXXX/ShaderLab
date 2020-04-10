@@ -1,10 +1,10 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "ShaderLab/Unlit/UnlitTextureWithRim"
+Shader "ShaderLab/Unlit/Rim/UnlitTextureWithRim"
 {
     Properties
     {
-        _Texture("MainTexture",2D)="white"{}
+        _MainTex("MainTexture",2D)="white"{}
         _RimColor("RimColor",Color) = (1.0,1.0,1.0,1.0)
 		_RimFill("RimFill",Range(-1,1)) = 0
     }
@@ -17,7 +17,7 @@ Shader "ShaderLab/Unlit/UnlitTextureWithRim"
             #pragma vertex vert
             #pragma fragment frag
 
-            sampler2D _Texture;
+            sampler2D _MainTex;
             fixed4 _RimColor;
             fixed _RimFill;
 
@@ -52,7 +52,7 @@ Shader "ShaderLab/Unlit/UnlitTextureWithRim"
                 float t = 1 + dot(normalize(i.viewNormal), normalize(i.viewPosition)) + _RimFill;//Transparency Factor
 				t = saturate(t)*_RimColor.a;
                 
-                return (1-t)*tex2D(_Texture,i.uv)+t*fixed4(_RimColor.rgb,1);
+                return (1-t)*tex2D(_MainTex,i.uv)+t*fixed4(_RimColor.rgb,1);
             }
             ENDCG
         }

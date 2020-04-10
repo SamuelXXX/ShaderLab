@@ -1,10 +1,10 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "ShaderLab/Unlit/ColorSeeThrough"
+Shader "ShaderLab/Unlit/SeeThrough/ColorSeeThrough"
 {
     Properties
     {
-        _Texture("Texture",2D)="white"{}
+        _MainTex("Base (RGB)",2D)="white"{}
         _Color("CullColor",Color)=(1.0,1.0,1.0,1.0)
     }
 
@@ -54,7 +54,7 @@ Shader "ShaderLab/Unlit/ColorSeeThrough"
             #pragma vertex vert
             #pragma fragment frag
 
-            sampler2D _Texture;
+            sampler2D _MainTex;
             int _ShowVisible;
             
             struct appdata{
@@ -76,7 +76,7 @@ Shader "ShaderLab/Unlit/ColorSeeThrough"
             }
 
             float4 frag(v2f i):SV_Target{
-                return tex2D(_Texture,i.uv);
+                return tex2D(_MainTex,i.uv);
             }
 
             ENDCG

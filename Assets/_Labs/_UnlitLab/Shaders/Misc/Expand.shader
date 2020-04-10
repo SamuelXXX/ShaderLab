@@ -1,10 +1,10 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "ShaderLab/Unlit/Expand"
+Shader "ShaderLab/Unlit/Misc/Expand"
 {
     Properties
     {
-        _Texture("Texture",2D)="white"{}
+        _MainTex("Texture",2D)="white"{}
         _Expand("Expand",Range(-0.1,0.1)) = 0
     }
 
@@ -18,7 +18,7 @@ Shader "ShaderLab/Unlit/Expand"
             #pragma vertex vert
             #pragma fragment frag
 
-            sampler2D _Texture;
+            sampler2D _MainTex;
             float _Expand;
 
             struct appdata{
@@ -45,7 +45,7 @@ Shader "ShaderLab/Unlit/Expand"
 
             float4 frag(v2f f):SV_TARGET
             {
-                return tex2D(_Texture,f.uv);
+                return tex2D(_MainTex,f.uv);
             }
             ENDCG
         }

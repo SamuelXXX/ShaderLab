@@ -1,4 +1,4 @@
-﻿Shader "ShaderLab/Unlit/NormalViewer"
+﻿Shader "ShaderLab/Unlit/Basic/NormalViewer"
 {
     SubShader
     {

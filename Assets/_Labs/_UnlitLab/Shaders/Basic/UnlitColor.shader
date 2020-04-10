@@ -1,10 +1,10 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "ShaderLab/Unlit/UnlitColor"
+Shader "ShaderLab/Unlit/Basic/UnlitColor"
 {
     Properties
     {
-        _Color("MainColor",Color)=(1.0,1.0,1.0,1.0)
+        _Color("Color",Color)=(1.0,1.0,1.0,1.0)
     }
     SubShader
     {

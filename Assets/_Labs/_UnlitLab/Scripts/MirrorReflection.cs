@@ -8,7 +8,7 @@ using System.Collections;
 public class MirrorReflection : MonoBehaviour
 {
     public bool m_DisablePixelLights = true;
-    public int m_TextureSize = 256;
+    public int m_MainTexSize = 256;
     public float m_ClipPlaneOffset = 0.07f;
 
     public LayerMask m_ReflectLayers = -1;
@@ -147,15 +147,15 @@ public class MirrorReflection : MonoBehaviour
         reflectionCamera = null;
 
         // Reflection render texture
-        if (!m_ReflectionTexture || m_OldReflectionTextureSize != m_TextureSize)
+        if (!m_ReflectionTexture || m_OldReflectionTextureSize != m_MainTexSize)
         {
             if (m_ReflectionTexture)
                 DestroyImmediate(m_ReflectionTexture);
-            m_ReflectionTexture = new RenderTexture(m_TextureSize, m_TextureSize, 16);
+            m_ReflectionTexture = new RenderTexture(m_MainTexSize, m_MainTexSize, 16);
             m_ReflectionTexture.name = "__MirrorReflection" + GetInstanceID();
             m_ReflectionTexture.isPowerOfTwo = true;
             m_ReflectionTexture.hideFlags = HideFlags.DontSave;
-            m_OldReflectionTextureSize = m_TextureSize;
+            m_OldReflectionTextureSize = m_MainTexSize;
         }
 
         // Camera for reflection

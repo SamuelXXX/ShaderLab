@@ -1,6 +1,6 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "ShaderLab/Unlit/DepthViewer"
+Shader "ShaderLab/Unlit/Basic/DepthViewer"
 {
     Properties
     {

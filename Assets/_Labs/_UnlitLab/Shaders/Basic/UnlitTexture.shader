@@ -1,10 +1,10 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "ShaderLab/Unlit/UnlitTexture"
+Shader "ShaderLab/Unlit/Basic/UnlitTexture"
 {
     Properties
     {
-        _Texture("MainTexture",2D)="white"{}
+        _MainTex("MainTexture",2D)="white"{}
     }
 
     SubShader
@@ -16,7 +16,7 @@ Shader "ShaderLab/Unlit/UnlitTexture"
             #pragma vertex vert
             #pragma fragment frag
             
-            sampler2D _Texture;
+            sampler2D _MainTex;
             struct appdata{
                 float4 position:POSITION;
                 float2 uv: TEXCOORD0;
@@ -39,7 +39,7 @@ Shader "ShaderLab/Unlit/UnlitTexture"
 
             float4 frag(v2f i):SV_TARGET
             {
-                return tex2D(_Texture,i.uv);
+                return tex2D(_MainTex,i.uv);
             }
             ENDCG
         }
