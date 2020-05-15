@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BrushRawImage : MonoBehaviour
 {
     public Brush brush;
+    public Color clearColor;
     [Range(0, 10)]
     public float scale;
     RawImage m_Image;
@@ -21,7 +22,7 @@ public class BrushRawImage : MonoBehaviour
     IEnumerator StartRoutine()
     {
         //Create a painting canvas to provide RenderTexture, set color to white
-        paintingCanvas = new PaintingCanvas(Color.white);
+        paintingCanvas = new PaintingCanvas(clearColor);
         m_Image = GetComponent<RawImage>();
 
         //Assign paintingCanvas to RawImage Component 
